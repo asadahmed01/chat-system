@@ -6,24 +6,27 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using System.Threading;
+using System.Resources;
 
 namespace Server
 {
     class Program
     {
-
+        public static List<TcpClient> clientList = new List<TcpClient>();
         static void Main(string[] args)
         {
+            TcpClient client = null;
             TcpListener server = null;
             try
             {
 
 
                 //prepare the TcpListener on port 3000
-                Int32 port = 9000;
+                Int32 port = 13000;
                 IPAddress localAddress = IPAddress.Parse("127.0.0.1");
                 //create the listener/server
                 server = new TcpListener(localAddress, port);
+                client = default;
                 //start the server
                 server.Start();
 
@@ -31,8 +34,11 @@ namespace Server
                 while (true)
                 {
                     Console.WriteLine("waiting for connection...");
-                    TcpClient client = server.AcceptTcpClient();
+                    client = server.AcceptTcpClient();
+                    
                     Console.WriteLine("connected!");
+
+                    clientList.Add(client);
 
                     ParameterizedThreadStart thread = new ParameterizedThreadStart(Helper);
                     Thread clientThread = new Thread(thread);
@@ -47,6 +53,7 @@ namespace Server
             finally
             {
                 // Stop listening for new clients.
+                client.Close();
                 server.Stop();
             }
 
@@ -58,16 +65,16 @@ namespace Server
         {
             TcpClient client = (TcpClient)obj;
             //buffer for reading data
-            Byte[] bytes = new Byte[1000];
-            //create string var for holding the decoded data
-            String data = null;
-            data = null;
+            Byte[] bytes = new Byte[13000];
+            string data = string.Empty;
+            byte[] msg = new byte[30000];
             int counter;
             //stream object for reading and writing
             NetworkStream netStream = client.GetStream();
             //keep looping untill all data from the client is recieved
             while ((counter = netStream.Read(bytes, 0, bytes.Length)) != 0)
             {
+                //create string var for holding the decoded data
                 // Translate data bytes to a ASCII string.
                 data = Encoding.ASCII.GetString(bytes, 0, counter);
                 Console.WriteLine("Received: {0}", data);
@@ -75,15 +82,22 @@ namespace Server
                 // Process the data sent by the client.
                 data = data.ToUpper();
 
-                byte[] msg = Encoding.ASCII.GetBytes(data);
+                msg = Encoding.ASCII.GetBytes(data);
 
                 // Send back a response.
-                netStream.Write(msg, 0, msg.Length);
-                Console.WriteLine("Sent: {0}", data);
+                //foreach(TcpClient user in clientList)
+                //{
+                    netStream.Write(msg, 0, msg.Length);
+                    Console.WriteLine("Server Sent: {0}", data);
+                //}
+                //netStream.Write(msg, 0, msg.Length);
+                //Console.WriteLine("Sent: {0}", data);
             }
 
+            
             // Shutdown and end connection
             client.Close();
+            
         }
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\bin\Debug\ClientChat.exe.config
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\bin\Debug\ClientChat.exe
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\bin\Debug\ClientChat.pdb
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat.csprojAssemblyReference.cache
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\MainWindow.g.cs
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\App.g.cs
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat_MarkupCompile.cache
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat_MarkupCompile.lref
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\MainWindow.baml
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat.g.resources
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat.Properties.Resources.resources
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat.csproj.GenerateResource.cache
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat.csproj.CoreCompileInputs.cache
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat.exe
+C:\Users\asada\Desktop\chatSystem\ClientChat\ClientChat\obj\Debug\ClientChat.pdb
